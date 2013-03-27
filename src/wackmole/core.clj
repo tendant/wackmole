@@ -17,9 +17,11 @@
   (let [expected (pickgrid)]
     (doall (map println (partition 3 expected)))
     (println "Where to wack?")
-    (let [x (int-val (read-line))
+    (let [_ (println "Pick X:")
+          x (int-val (read-line))
+          _ (println "Pick Y:")
           y (int-val (read-line))
-          z (+ (* 3 x) y)
+          z (+ (* 3 y) x)
           ]
       (= "X" (nth expected z))
       ))
