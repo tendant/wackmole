@@ -8,15 +8,19 @@
 (defn pickgrid []
   (assoc (vec (repeat 9 "O")) (rand-int 9) "X"))
 
+(defn int-val [x]
+  (mod (dec (Integer/valueOf x)) 3))
+
 (defn foo
   "I don't do a whole lot."
   []
   (let [expected (pickgrid)]
     (doall (map println (partition 3 expected)))
     (println "Where to wack?")
-    (let [input (read-line)
-          aa (dec (Integer/valueOf input))
+    (let [x (int-val (read-line))
+          y (int-val (read-line))
+          z (+ (* 3 x) y)
           ]
-      (= "X" (nth expected aa))
+      (= "X" (nth expected z))
       ))
   )
